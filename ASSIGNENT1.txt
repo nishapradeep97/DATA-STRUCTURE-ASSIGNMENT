@@ -1,0 +1,226 @@
+#QUESTION 1:
+
+def findsum(arr,len,summ):
+  print("pairs sum:",summ)
+  for i in range(len):
+    for j in range(i,len):
+      if(arr[i]+arr[j]==summ):
+        print(arr[i],arr[j])
+arr=[5,6,9,8,3,1]
+summ=9
+print("array is:",arr)
+findsum(arr,len(arr),summ)
+
+#QUESTION 2:
+
+ar=[1,2,3,4,5,6]
+print("Array before reversing:",ar)
+ar.reverse()
+print("Array after reversing",ar)
+
+#QUESTION 3:
+
+def rotation(str1,str2):
+  s1=len(str1)
+  s2=len(str2)
+  temp=''
+  if s1!=s2:
+    return 0
+  temp=str1+str1
+  if temp.count(str2)>0:
+    return 1
+  else:
+    return 0
+str1=input("Enter String1:")
+str2=input("Enter String2: ")
+if rotation(str1,str2):
+  print("Strings are in rotation")
+else:
+  print("Strings are not in rotation")
+
+#QUESTION 4:
+
+def first(str1):
+  chr=[]
+  c={}
+  for i in str1:
+    if i in c:
+      c[i]=c[i]+1
+    else:
+      c[i]=1
+      chr.append(i)
+  for i in chr:
+    if c[i]==1:
+      return i
+  return None
+
+#QUESTION 5:
+
+def tower(n,source,dest,aux):
+  if n==1:
+    print("move disc 1 from",source, "to destination",dest)
+    return
+  tower(n-1,source,aux,dest)
+  print("move disc ",n,"from source ", source,"to destination ",dest)
+  tower(n-1,aux,dest,source)
+n=4
+tower(n,"A","B","C")
+
+
+# QUESTION 6
+
+class Stack:
+  def __init__(self):
+    self.stack=[]
+  def push(self,element):
+    self.stack.append(element)
+  def pop(self):
+    if len(self.stack)==0:
+      print('stack is empty')
+      return
+    return self.stack.pop()
+  def peek(self):
+    if len(self.stack)==0:
+      print('stack is empty')
+      return
+    return self.stack[-1]
+posttopre=Stack()
+operators='+-*/^'
+def posttopreconv(exp):
+  for i in exp:
+    result=''
+    if i not in operators:
+      posttopre.push(i)
+    else:
+      a=posttopre.pop()
+      b=posttopre.pop()
+      result = result+i+b+a
+      posttopre.push(result)
+
+  return result
+x=input('Enter the postfix expression: ')
+print("prefix expression:")
+posttopreconv(x)
+
+#QUESTION 7
+class Stack:
+  def __init__(self):
+    self.stack=[]
+  def push(self,element):
+    self.stack.append(element)
+  def pop(self):
+    if len(self.stack)==0:
+      print('stack is empty')
+      return
+    return self.stack.pop()
+  def peek(self):
+    if len(self.stack)==0:
+      print('stack is empty')
+      return
+    return self.stack[-1]
+pretoinfix=Stack()
+operators='+-*/^'
+def pretoinconvert(express):
+  express1=express[::-1]
+  for i in express1:
+    result=''
+    if i not in operators:
+      pretoinfix.push(i)
+    else:
+      a=pretoinfix.pop()
+      b=pretoinfix.pop()
+      result += a+i+b
+      pretoinfix.push(result)
+
+  return result
+x=input('Enter the prefix expression: ')
+print("Infix epression:")
+pretoinconvert(x)
+
+#QUESTION 8
+print("Enter the bracket expression:")
+inp=input()
+brac=('[','{','(')
+stack=[]
+for i in inp:
+  if i in brac:
+    stack.append(i) 
+  if i not in brac:
+    if i=='}' and stack[-1]=='{':
+      stack.pop()
+    elif i==']' and stack[-1]=='[':
+      stack.pop()
+    elif i==')' and stack[-1]=='(':
+      stack.pop()
+    else:
+      break
+if len(stack)==0:
+  print('the brackets are closed')
+else:
+  print('the brackets are not closed')
+
+# QUESTION 9
+class Stack:
+  def __init__(self):
+    self.stack=[]
+  def push(self,element):
+    self.stack.append(element)
+  def pop(self):
+    if len(self.stack)==0:
+      print('stack is empty')
+      return
+    return self.stack.pop()
+  def peek(self):
+    if len(self.stack)==0:
+      print('stack is empty')
+      return
+    return self.stack[-1]
+def reverse(stack):
+  print('orginal Stack:', stack.stack)
+  rever=stack.stack[::-1]
+  return 'stack reversed:',rever
+
+s=Stack()
+s.push(100)
+s.push(200)
+s.push(300)
+s.push(400)
+s.push(500)
+s.push(600)
+s.pop()
+reverse(s)
+
+#QUESTION 10
+class Stack:
+  def __init__(self):
+    self.stack=[]
+  def push(self,element):
+    self.stack.append(element)
+  def pop(self):
+    if len(self.stack)==0:
+      print('stack is empty')
+      return
+    return self.stack.pop()
+  def peek(self):
+    if len(self.stack)==0:
+      print('stack is empty')
+      return
+    return self.stack[-1]
+
+
+def minimum(stack):
+  print("Stack is:",stack.stack)
+  print("minimum value :")
+  r=min(stack.stack)
+  return r
+  
+
+s=Stack()
+s.push(400)
+s.push(200)
+s.push(300)
+s.push(100)
+s.push(500)
+s.push(600)
+s.pop()
+minimum(s)  
